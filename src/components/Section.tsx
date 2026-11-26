@@ -9,11 +9,11 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({ id, title, children, className = "" }) => {
     return (
-        <section id={id} className={`py-20 px-6 md:px-12 max-w-7xl mx-auto ${className}`}>
+        <section id={id} className={`py-12 md:py-20 px-4 md:px-6 max-w-5xl mx-auto ${className}`}>
             {title && (
-                <h2 className="text-3xl font-bold mb-12 text-zinc-900 tracking-tight relative inline-block">
+                <h2 className="text-xl md:text-2xl font-bold mb-8 md:mb-10 text-ulpgc-gray-dark tracking-tight relative inline-block">
                     {title}
-                    <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-600 rounded-full"></span>
+                    <span className="absolute -bottom-2 left-0 w-1/3 h-0.5 bg-ulpgc-blue rounded-full" />
                 </h2>
             )}
             {children}

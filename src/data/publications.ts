@@ -12,6 +12,16 @@ export interface Publication {
 
 export const publications: Publication[] = [
     {
+        id: 6,
+        title: "Introducing a tourist tax in a mature destination: Evidence from a beta-binomial model",
+        authors: "Gómez-Déniz, E., Cazorla-Artiles, J.M., **González-Martel, C.**",
+        venue: "Tourism Economics",
+        year: 2026,
+        links: {
+            doi: "https://doi.org/10.1177/13548166261478334"
+        }
+    },
+    {
         id: 1,
         title: "Análisis de equidad y sostenibilidad presupuestaria del sistema de copago farmacéutico en España",
         authors: "Pinilla, J., **González-Martel, C.**, González López-Valcárcel, B., et al.",
@@ -49,16 +59,6 @@ export const publications: Publication[] = [
         year: 2021,
         links: {
             doi: "https://doi.org/10.1016/j.tourman.2020.104236"
-        }
-    },
-    {
-        id: 5,
-        title: "Sequence effects of city tour experiences: A tourism fatigue perspective",
-        authors: "Teichert, T., Sun, H., **González-Martel, C.**",
-        venue: "Journal of Destination Marketing & Management",
-        year: 2021,
-        links: {
-            doi: "https://doi.org/10.1016/j.jdmm.2021.100646"
         }
     }
 ];

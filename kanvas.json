@@ -1,0 +1,177 @@
+{
+  "kanvas": 1,
+  "title": "web-personal-2026",
+  "groups": [
+    {
+      "id": "CN",
+      "name": "Content"
+    },
+    {
+      "id": "DS",
+      "name": "Design"
+    },
+    {
+      "id": "DP",
+      "name": "Deployment"
+    },
+    {
+      "id": "QA",
+      "name": "QA"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "CN-01",
+      "title": "Replace placeholder project images",
+      "state": "review",
+      "group": "CN",
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "The Projects section shows three generic Unsplash stock photos (a dashboard, a graph, a laptop) that have nothing to do with the tourism reports and dashboard described. Swap them for images that actually represent the work (e.g. screenshots of the Lanzarote/Gran Canaria dashboards, or real landscape shots of the islands), stored in the repo rather than hot-linked from Unsplash, so the cards no longer look like placeholder content. Finished when each of the three project cards shows an image a visitor would associate with that specific project, and the images load offline from the deployed site (not from Unsplash).",
+      "notes": [
+        {
+          "at": "2026-11-26T08:45:07Z",
+          "by": "human",
+          "text": "Started in the board."
+        },
+        {
+          "at": "2026-11-26T10:01:14Z",
+          "by": "omp",
+          "text": "Plan: pick 3 stock images (people working + tourism dashboard/report context) for the 3 project cards, store in src/assets, replace Unsplash hot-links, rebuild and verify offline load."
+        },
+        {
+          "at": "2026-11-26T10:23:31Z",
+          "by": "omp",
+          "text": "Swapped the 3 Unsplash hot-links for stock images stored in the repo (Pexels free license, downloaded into src/assets/projects/):\n- Lanzarote Tourism Automation: man analyzing data on a laptop in an office (pexels 7567529)\n- Gran Canaria Tourism Reports: woman reviewing a chart on a laptop at a desk (pexels 36482981)\n- Gran Canaria Tourism Dashboard: hands on a laptop showing a business dashboard (pexels 38246349)\n\nprojects.ts now imports the 3 JPEGs; no unsplash/pexels references remain in src, public, or the built dist (verified with grep). npm run build passes; the 3 images are emitted into dist/assets.\n\nTo review: open the Projects section and check the 3 cards look right and load offline."
+        },
+        {
+          "at": "2026-11-26T10:38:34Z",
+          "by": "omp",
+          "text": "Fix: GC tourism-report image was the green lagoon of El Golfo (Lanzarote), not Gran Canaria. Replaced with Maspalomas dunes (pexels 39442950): dunes + ocean + sky. Rebuilding."
+        },
+        {
+          "at": "2026-11-26T10:42:00Z",
+          "by": "omp",
+          "text": "Reopened in doing after user review caught the GC image error. Fix applied (Maspalomas dunes, pexels 39442950); rebuild clean; back in review."
+        },
+        {
+          "at": "2026-11-26T10:46:15Z",
+          "by": "omp",
+          "text": "Fix applied after user review: the GC tourism-report image was the green lagoon of El Golfo (Lanzarote). Replaced it with Maspalomas dunes (pexels 39442950, 1200x823 landscape): golden dunes + ocean + sky, clearly Gran Canaria. Build clean; no external image links in dist."
+        }
+      ],
+      "started": {
+        "at": "2026-11-26T10:01:14Z",
+        "by": "omp"
+      }
+    },
+    {
+      "id": "CN-02",
+      "title": "Refresh site metadata and favicon",
+      "state": "review",
+      "group": "CN",
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "index.html still carries the Vite template's favicon (/vite.svg) and has no meta description, which is what shows up in search results and browser tabs. Also public/hero-abstract.png (a 477 KB leftover asset) is not referenced anywhere. Set a proper title, a one-line meta description, an Open Graph image, and a favicon that fits the site (the profile photo works well); remove the unused template assets. Finished when the browser tab and a Google search preview show the site's real identity, and no template leftovers remain in public/.",
+      "notes": [
+        {
+          "at": "2026-11-26T08:45:44Z",
+          "by": "human",
+          "text": "Started in the board."
+        },
+        {
+          "at": "2026-11-26T10:53:02Z",
+          "by": "omp",
+          "text": "Plan: add meta description, OG tags, replace vite.svg favicon with a custom SVG, and a short theme-color."
+        },
+        {
+          "at": "2026-11-26T11:04:14Z",
+          "by": "omp",
+          "text": "Added meta description, OG tags, theme-color, and a custom favicon (public/favicon.svg with CG monogram). Generated public/profile-180.jpg (180x180 crop of profile) and public/og-image.jpg (1200x630 with name, role, ULPGC). Removed unused public/hero-abstract.png and public/vite.svg. Build clean; all files emitted in dist/."
+        }
+      ],
+      "started": {
+        "at": "2026-11-26T10:53:02Z",
+        "by": "omp"
+      }
+    },
+    {
+      "id": "DS-01",
+      "title": "Improve mobile layout",
+      "state": "review",
+      "group": "DS",
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "Two rough spots on small screens: the hero stacks the photo above the bio, so the identity sits far from the text, and the navbar (brand + ULPGC badge + language toggle) gets cramped around 320-360 px width. Tighten the mobile layout so the hero reads as one compact unit (photo, name, role, socials, then bio) and the navbar keeps every control reachable without wrapping. Finished when the site at 360 px and 768 px shows no overflow, no wrapped or clipped labels, and the hero looks intentional on a phone rather than desktop-stacked.",
+      "notes": [
+        {
+          "at": "2026-11-26T08:46:10Z",
+          "by": "human",
+          "text": "Started in the board."
+        },
+        {
+          "at": "2026-11-26T11:20:06Z",
+          "by": "omp",
+          "text": "Tightened mobile layout across all sections: Section (py-12/px-4 on mobile), Hero (smaller photo 128px, tighter gaps), Teaching (p-4, gap-3, smaller icons), Publications (p-4, gap-2, smaller year badge), Projects (gap-4, p-4). Build clean. Check at 360px and 768px."
+        }
+      ],
+      "started": {
+        "at": "2026-11-26T11:13:54Z",
+        "by": "omp"
+      }
+    },
+    {
+      "id": "DP-01",
+      "title": "Commit the current redesign",
+      "state": "doing",
+      "group": "DP",
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "Git history has only the initial template commit; everything since (the bilingual content, the EN/ES toggle, the ULPGC color theme, the new sections) sits as uncommitted working-tree changes, so the deployed gh-pages site does not match what is in the repo. Create a clean commit of the current state (excluding node_modules and dist) so history reflects the site as it stands. Finished when git status is clean and the commit contains the full redesigned site.",
+      "notes": [
+        {
+          "at": "2026-11-26T08:46:30Z",
+          "by": "human",
+          "text": "Started in the board."
+        }
+      ],
+      "started": {
+        "at": "2026-11-26T11:20:18Z",
+        "by": "omp"
+      }
+    },
+    {
+      "id": "DP-02",
+      "title": "Deploy to GitHub Pages and fix the deploy script",
+      "state": "todo",
+      "group": "DP",
+      "deps": ["DP-01"],
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "The site is deployed with gh-pages -d dist, but there is no guarantee the script and the branch settings work together: verify the repo's Pages settings serve the /web-personal/ base path (vite.config.ts already sets it), run the deploy, and check the live URL loads correctly including the fonts and images. Finished when the live GitHub Pages site shows the current version and no 404s or asset errors appear in the browser console.",
+      "notes": [
+        {
+          "at": "2026-11-26T08:46:47Z",
+          "by": "human",
+          "text": "Started in the board."
+        }
+      ]
+    },
+    {
+      "id": "QA-01",
+      "title": "Review content and links",
+      "state": "todo",
+      "group": "QA",
+      "at": "2026-11-25T22:38:19Z",
+      "by": "omp",
+      "desc": "Go through the visible content in both EN and ES and check it end to end: every link on the page works (Scholar, ORCID, GitHub, X, email, all publication DOIs, all project demo URLs), the language toggle switches every string on the page including the contact section, and there are no obvious typos or stale items (e.g. the 2025 teaching year, publication years). Report the findings as a note on the board with the list of broken links or wrong texts found. Finished when the note lists every broken link, wrong translation, or stale fact, or confirms the site is clean.",
+      "notes": [
+        {
+          "at": "2026-11-26T08:46:57Z",
+          "by": "human",
+          "text": "Started in the board."
+        }
+      ]
+    }
+  ]
+}

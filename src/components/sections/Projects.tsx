@@ -1,95 +1,99 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { Section } from '../Section';
 import { projects } from '../../data/projects';
+import { useLang } from '../../context/LanguageContext';
 
 export const Projects = () => {
+    const { t } = useLang();
+
     return (
-        <Section id="projects" title="Featured Projects">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project) => (
-                    <div key={project.id} className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-zinc-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-300 transform hover:-translate-y-1">
-                        {/* Image Container */}
-                        <div className="relative h-64 overflow-hidden">
-                            <div className="absolute inset-0 bg-zinc-200 animate-pulse" /> {/* Placeholder while loading */}
-                            {(project.links.demo || project.links.github) ? (
-                                <a
-                                    href={project.links.demo || project.links.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block w-full h-full cursor-pointer"
-                                >
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="relative w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                </a>
-                            ) : (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="relative w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                                />
-                            )}
-
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-60 group-hover:opacity-40 transition-opacity pointer-events-none" />
-
-                            {/* Floating Tags - Glassmorphism */}
-                            <div className="absolute top-4 left-4 flex flex-wrap gap-2 pointer-events-none">
-                                {project.tags.map(tag => (
-                                    <span key={tag} className="px-3 py-1 backdrop-blur-md bg-black/30 text-white border border-white/20 text-xs font-medium rounded-full shadow-lg">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-8 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-bold text-zinc-900 mb-3 group-hover:text-indigo-600 transition-colors">
+        <Section id="projects" title={t.sections.projects}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {projects.map((project) => {
+                    const desc = t.projects.find(p => p.id === project.id)?.description ?? project.description;
+                    return (
+                        <div
+                            key={project.id}
+                            className="group flex flex-col bg-white rounded-xl overflow-hidden border border-ulpgc-gray-10 hover:border-ulpgc-blue-10 hover:shadow-md transition-all duration-200"
+                        >
+                            {/* Image */}
+                            <div className="relative h-44 overflow-hidden bg-ulpgc-gray-5">
+                                <div className="absolute inset-0 bg-ulpgc-gray-10 animate-pulse" />
                                 {(project.links.demo || project.links.github) ? (
                                     <a
                                         href={project.links.demo || project.links.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-indigo-600 transition-colors"
+                                        target="_blank" rel="noopener noreferrer"
+                                        className="block w-full h-full"
                                     >
-                                        {project.title}
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
                                     </a>
                                 ) : (
-                                    project.title
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
                                 )}
-                            </h3>
-                            <p className="text-zinc-500 mb-8 leading-relaxed">
-                                {project.description}
-                            </p>
 
-                            <div className="mt-auto flex gap-4 pt-4 border-t border-zinc-50">
-                                {project.links.github && (
-                                    <a
-                                        href={project.links.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-50 text-zinc-700 rounded-xl font-medium hover:bg-zinc-100 hover:text-zinc-900 transition-colors group/btn"
-                                    >
-                                        <Github size={18} className="group-hover/btn:scale-110 transition-transform" /> Code
-                                    </a>
-                                )}
-                                {project.links.demo && (
-                                    <a
-                                        href={project.links.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 group/btn"
-                                    >
-                                        <ExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" /> Demo
-                                    </a>
-                                )}
+                                {/* Tags overlay */}
+                                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                                    {project.tags.map(tag => (
+                                        <span
+                                            key={tag}
+                                            className="px-2 py-0.5 bg-ulpgc-gray-dark/70 text-white text-xs font-medium rounded-full backdrop-blur-sm"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-4 md:p-5 flex flex-col flex-grow">
+                                <h3 className="font-bold text-ulpgc-gray-dark text-base mb-2 group-hover:text-ulpgc-blue transition-colors leading-snug">
+                                    {(project.links.demo || project.links.github) ? (
+                                        <a
+                                            href={project.links.demo || project.links.github}
+                                            target="_blank" rel="noopener noreferrer"
+                                        >
+                                            {project.title}
+                                        </a>
+                                    ) : (
+                                        project.title
+                                    )}
+                                </h3>
+                                <p className="text-ulpgc-gray text-sm leading-relaxed flex-grow">
+                                    {desc}
+                                </p>
+
+                                <div className="mt-4 pt-4 border-t border-ulpgc-gray-10 flex gap-3">
+                                    {project.links.github && (
+                                        <a
+                                            href={project.links.github}
+                                            target="_blank" rel="noopener noreferrer"
+                                            className="flex items-center gap-1.5 text-xs font-medium text-ulpgc-gray hover:text-ulpgc-blue transition-colors"
+                                        >
+                                            <Github size={14} /> Code
+                                        </a>
+                                    )}
+                                    {project.links.demo && (
+                                        <a
+                                            href={project.links.demo}
+                                            target="_blank" rel="noopener noreferrer"
+                                            className="flex items-center gap-1.5 text-xs font-medium text-ulpgc-blue hover:text-ulpgc-blue-dark transition-colors"
+                                        >
+                                            <ExternalLink size={14} /> Demo
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </Section>
     );

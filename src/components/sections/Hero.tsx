@@ -1,75 +1,138 @@
-import { ArrowRight, Mail, FileText, Github } from 'lucide-react';
+import { Mail, Github, FileText } from 'lucide-react';
+import profileImg from '../../assets/profile.jpg';
+import { useLang } from '../../context/LanguageContext';
+
+const XIcon = () => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+    </svg>
+);
 
 export const Hero = () => {
+    const { t } = useLang();
+    const h = t.hero;
+
     return (
-        <section className="min-h-screen flex items-center pt-20 px-6">
-            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8 animate-in slide-in-from-left duration-700">
-                    <div className="space-y-4">
-                        <p className="text-indigo-600 font-semibold tracking-wide uppercase text-sm">Associate Professor at ULPGC</p>
-                        <h1 className="text-5xl md:text-7xl font-bold text-zinc-900 leading-tight">
-                            Hi, I'm <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Christian González</span>.
-                        </h1>
-                        <p className="text-xl text-zinc-600 max-w-lg leading-relaxed">
-                            My research focuses on applying machine learning techniques to Financial Economics, Computational Economics, and data-driven applications in tourism and health economics. I have been a visiting researcher at the Barcelona Supercomputing Center (BSC-CNS) and Universitat de Barcelona. I teach in the Economics, Business Administration, and Data Science programs at the University of Las Palmas de Gran Canaria (ULPGC). I am also passionate about R and reproducible data analysis.
-                        </p>
-                    </div>
+        <section className="pt-20 md:pt-24 pb-12 md:pb-16 px-4 md:px-6 bg-white border-b border-ulpgc-gray-10">
+            <div className="max-w-5xl mx-auto">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <a href="#projects" className="px-8 py-4 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-indigo-200">
-                            Research & Projects <ArrowRight size={20} />
-                        </a>
-                        <button
-                            onClick={() => window.location.href = 'mailto:christian.gonzalez' + '@' + 'ulpgc.es'}
-                            className="px-8 py-4 bg-white border border-zinc-200 text-zinc-900 rounded-full font-medium hover:bg-zinc-50 transition-colors flex items-center justify-center gap-2">
-                            Contact Me <Mail size={20} />
-                        </button>
-                    </div>
-
-                    <div className="flex gap-8 pt-8 border-t border-zinc-100">
-                        <div>
-                            <span className="block text-3xl font-bold text-zinc-900">16+</span>
-                            <span className="text-sm text-zinc-500">Scopus Pubs</span>
-                        </div>
-                        <div>
-                            <span className="block text-3xl font-bold text-zinc-900">12+</span>
-                            <span className="text-sm text-zinc-500">Projects</span>
-                        </div>
-                        <div>
-                            <span className="block text-3xl font-bold text-zinc-900">+25</span>
-                            <span className="text-sm text-zinc-500">Years Exp.</span>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4 pt-4">
-                        <a href="https://github.com/chrglez" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-600 transition-colors"><Github size={24} /></a>
-                        <a href="https://x.com/chrglez" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-600 transition-colors">
-                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
-                        </a>
-                        <a href="https://scholar.google.es/citations?hl=es&user=aCeZn5kAAAAJ" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-600 transition-colors"><FileText size={24} /></a>
-                        <a href="https://orcid.org/0000-0003-1081-0843" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-600 transition-colors"><span className="font-bold text-lg">iD</span></a>
-                    </div>
-                </div>
-
-                <div className="relative mt-12 lg:mt-0 animate-in fade-in duration-1000 delay-300 flex justify-center">
-                    {/* Abstract decorative blobs - centered around the image */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-
-                    <div className="relative">
-                        <img
-                            src="/profile.jpg"
-                            alt="Christian González"
-                            className="relative z-10 w-80 h-80 object-cover object-center rounded-full shadow-2xl border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500"
+                    {/* Left: photo + identity + social */}
+                    <div className="md:w-52 flex flex-col items-center text-center shrink-0">
+                        <div
+                            role="img"
+                            aria-label="Christian González Martel"
+                            className="w-32 h-32 md:w-44 md:h-44 rounded-full shadow-md ring-4 ring-ulpgc-blue-10"
+                            style={{
+                                backgroundImage: `url(${profileImg})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: '30% 40%',
+                            }}
                         />
-                        <div className="absolute bottom-0 -right-12 z-20 bg-white p-6 rounded-2xl shadow-xl border border-zinc-100 max-w-xs animate-bounce-slow">
-                            <p className="text-sm font-medium text-zinc-500">Focus Area</p>
-                            <p className="text-lg font-bold text-zinc-900">Computational Economics</p>
+                        <h1 className="mt-4 md:mt-5 text-lg md:text-xl font-bold text-ulpgc-gray-dark leading-snug">
+                            Christian González Martel
+                        </h1>
+                        <p className="text-ulpgc-blue text-sm font-semibold mt-1">
+                            {h.role}
+                        </p>
+                        <p className="text-ulpgc-gray text-xs mt-0.5 leading-relaxed">
+                            {h.dept[0]}<br />
+                            {h.dept[1]}<br />
+                            {h.dept[2]}
+                        </p>
+
+                        {/* Social icon buttons */}
+                        <div className="flex flex-wrap justify-center gap-2 mt-4 md:mt-5">
+                            <a
+                                href="mailto:christian.gonzalez@ulpgc.es"
+                                title="Email"
+                                className="p-2 rounded-full bg-ulpgc-blue-10 text-ulpgc-blue hover:bg-ulpgc-blue hover:text-white transition-colors"
+                            >
+                                <Mail size={16} />
+                            </a>
+                            <a
+                                href="https://scholar.google.es/citations?hl=es&user=aCeZn5kAAAAJ"
+                                target="_blank" rel="noopener noreferrer"
+                                title="Google Scholar"
+                                className="p-2 rounded-full bg-ulpgc-blue-10 text-ulpgc-blue hover:bg-ulpgc-blue hover:text-white transition-colors"
+                            >
+                                <FileText size={16} />
+                            </a>
+                            <a
+                                href="https://github.com/chrglez"
+                                target="_blank" rel="noopener noreferrer"
+                                title="GitHub"
+                                className="p-2 rounded-full bg-ulpgc-blue-10 text-ulpgc-blue hover:bg-ulpgc-blue hover:text-white transition-colors"
+                            >
+                                <Github size={16} />
+                            </a>
+                            <a
+                                href="https://x.com/chrglez"
+                                target="_blank" rel="noopener noreferrer"
+                                title="Twitter / X"
+                                className="p-2 rounded-full bg-ulpgc-blue-10 text-ulpgc-blue hover:bg-ulpgc-blue hover:text-white transition-colors"
+                            >
+                                <XIcon />
+                            </a>
+                            <a
+                                href="https://orcid.org/0000-0003-1081-0843"
+                                target="_blank" rel="noopener noreferrer"
+                                title="ORCID"
+                                className="px-2 py-1.5 rounded-full bg-ulpgc-blue-10 text-ulpgc-blue hover:bg-ulpgc-blue hover:text-white transition-colors text-xs font-bold leading-none flex items-center"
+                            >
+                                iD
+                            </a>
                         </div>
                     </div>
+
+                    {/* Right: bio + interests + education */}
+                    <div className="flex-1 pt-1">
+                        <p className="text-ulpgc-gray leading-relaxed text-base">
+                            {h.bio}
+                        </p>
+
+                        <div className="mt-8 grid sm:grid-cols-2 gap-8">
+                            {/* Interests */}
+                            <div>
+                                <h3 className="font-bold text-ulpgc-gray-dark mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                                    <span className="w-1 h-4 bg-ulpgc-blue rounded-full inline-block" />
+                                    {h.interests_label}
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {h.interests.map(item => (
+                                        <span
+                                            key={item}
+                                            className="px-3 py-1 bg-ulpgc-blue-10 text-ulpgc-blue text-xs font-medium rounded-full"
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Education */}
+                            <div>
+                                <h3 className="font-bold text-ulpgc-gray-dark mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                                    <span className="w-1 h-4 bg-ulpgc-orange rounded-full inline-block" />
+                                    {h.education_label}
+                                </h3>
+                                <ul className="space-y-2">
+                                    {h.education.map((item, i) => (
+                                        <li key={i} className="text-sm">
+                                            <span className="font-semibold text-ulpgc-gray-dark">
+                                                {item.degree}
+                                            </span>
+                                            <br />
+                                            <span className="text-ulpgc-gray">{item.institution}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
