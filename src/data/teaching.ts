@@ -19,7 +19,8 @@ export const teaching: Course[] = [
         role: "Master's Course",
         description: "Máster Universitario en Turismo y Desarrollo Sostenible / Master in Tourism and Sustainable Development",
         icon: Globe,
-        year: "2026-27"
+        year: "2026-27",
+        link: "https://tides.ulpgc.es/master/#curriculum-2"
     },
     {
         id: 2,

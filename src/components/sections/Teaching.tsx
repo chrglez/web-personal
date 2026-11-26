@@ -40,7 +40,7 @@ export const Teaching = () => {
                                         className="inline-flex items-center gap-1 text-xs text-ulpgc-blue font-semibold mt-2 hover:underline"
                                     >
                                         <ExternalLink size={12} />
-                                        Guía docente
+                                        {t.teaching.linkLabel}
                                     </a>
                                 )}
                             </div>

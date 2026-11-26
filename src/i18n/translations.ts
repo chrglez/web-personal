@@ -33,6 +33,9 @@ export const translations = {
             publications: 'Publications',
             teaching: 'Teaching',
         },
+        teaching: {
+            linkLabel: 'Course page',
+        },
         projects: [
             { id: 1, description: 'Development of automated systems for generating tourism indicator reports for the Cabildo de Lanzarote. Streamlining data processing and visualization.' },
             { id: 2, description: 'Automated reporting pipeline for tourism statistics developed for Turismo Gran Canaria. Focuses on reproducibility and efficient data handling.' },
@@ -81,6 +84,9 @@ export const translations = {
             projects: 'Proyectos',
             publications: 'Publicaciones',
             teaching: 'Docencia',
+        },
+        teaching: {
+            linkLabel: 'Guía docente',
         },
         projects: [
             { id: 1, description: 'Desarrollo de sistemas automatizados para la generación de informes de indicadores turísticos para el Cabildo de Lanzarote. Optimización del procesamiento de datos y visualización.' },
