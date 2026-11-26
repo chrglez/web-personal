@@ -1,12 +1,16 @@
 import { Section } from '../Section';
 import { teaching } from '../../data/teaching';
 import { useLang } from '../../context/LanguageContext';
+import { ExternalLink } from 'lucide-react';
 
 export const Teaching = () => {
     const { t } = useLang();
 
     return (
         <Section id="teaching" title={t.sections.teaching} className="bg-ulpgc-gray-5">
+            <p className="text-sm font-semibold text-ulpgc-blue mb-4 tracking-wide uppercase">
+                2026-27
+            </p>
             <div className="grid md:grid-cols-2 gap-3 md:gap-4 max-w-3xl">
                 {teaching.map((course) => {
                     const Icon = course.icon;
@@ -28,6 +32,17 @@ export const Teaching = () => {
                                 <p className="text-xs text-ulpgc-gray leading-relaxed">
                                     {course.description}
                                 </p>
+                                {course.link && (
+                                    <a
+                                        href={course.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 text-xs text-ulpgc-blue font-semibold mt-2 hover:underline"
+                                    >
+                                        <ExternalLink size={12} />
+                                        Guía docente
+                                    </a>
+                                )}
                             </div>
                         </div>
                     );

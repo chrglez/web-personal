@@ -1,4 +1,4 @@
-import { Globe, Calculator } from 'lucide-react';
+import { Globe, Calculator, type LucideIcon } from 'lucide-react';
 
 export interface Course {
     id: number;
@@ -6,8 +6,9 @@ export interface Course {
     code: string;
     role: string;
     description: string;
-    icon: any;
+    icon: LucideIcon;
     year: string;
+    link?: string;
 }
 
 export const teaching: Course[] = [
@@ -27,6 +28,7 @@ export const teaching: Course[] = [
         role: "Degree Course",
         description: "Grado en Economía (Degree in Economics)",
         icon: Calculator,
-        year: "2026-27"
+        year: "2026-27",
+        link: "http://www2.ulpgc.es/aplicaciones/proyectosdocentes/pdf.php?NUEVA=1&id_proyecto=70653"
     }
 ];
