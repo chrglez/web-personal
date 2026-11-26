@@ -37,9 +37,9 @@ export const Teaching = () => {
                                         href={course.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 text-xs text-ulpgc-blue font-semibold mt-2 hover:underline"
+                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-ulpgc-gray-5 text-ulpgc-gray text-xs font-medium hover:bg-ulpgc-blue-10 hover:text-ulpgc-blue transition-colors mt-2"
                                     >
-                                        <ExternalLink size={12} />
+                                        <ExternalLink size={11} />
                                         {t.teaching.linkLabel}
                                     </a>
                                 )}
