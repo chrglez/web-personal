@@ -155,7 +155,9 @@
       "title": "Deploy to GitHub Pages and fix the deploy script",
       "state": "done",
       "group": "DP",
-      "deps": ["DP-01"],
+      "deps": [
+        "DP-01"
+      ],
       "at": "2026-11-25T22:38:19Z",
       "by": "omp",
       "desc": "The site is deployed with gh-pages -d dist, but there is no guarantee the script and the branch settings work together: verify the repo's Pages settings serve the /web-personal/ base path (vite.config.ts already sets it), run the deploy, and check the live URL loads correctly including the fonts and images. Finished when the live GitHub Pages site shows the current version and no 404s or asset errors appear in the browser console.",
@@ -179,9 +181,9 @@
     {
       "id": "QA-01",
       "title": "Review content and links",
-      "state": "review",
+      "state": "done",
       "group": "QA",
-      "at": "2026-11-25T22:38:19Z",
+      "at": "2026-11-27T22:23:23Z",
       "by": "omp",
       "desc": "Go through the visible content in both EN and ES and check it end to end: every link on the page works (Scholar, ORCID, GitHub, X, email, all publication DOIs, all project demo URLs), the language toggle switches every string on the page including the contact section, and there are no obvious typos or stale items (e.g. the 2025 teaching year, publication years). Report the findings as a note on the board with the list of broken links or wrong texts found. Finished when the note lists every broken link, wrong translation, or stale fact, or confirms the site is clean.",
       "notes": [
@@ -194,6 +196,11 @@
           "at": "2026-11-26T11:28:39Z",
           "by": "omp",
           "text": "QA results:\n- Links: 11 external URLs checked. All return 200 except 2 DOIs (10.1080/23311886.2023.2267261 → tandfonline.com 403, 10.1177/13548166261478334 → journals.sagepub.com 403) — both are paywalled, 403 expected, DOIs valid.\n- Email: mailto:christian.gonzalez@ulpgc.es (no validation possible).\n- Translations: EN/ES cover all visible strings (nav, hero, sections, projects, publications, contact, footer). No gaps found.\n- Stale content: teaching year 2025 is current. Publication years 2020-2026 are reasonable.\n- No typos spotted in EN or ES text.\nSite is clean."
+        },
+        {
+          "at": "2026-11-27T22:23:23Z",
+          "by": "human",
+          "text": "Cerrado. Site clean."
         }
       ],
       "started": {
